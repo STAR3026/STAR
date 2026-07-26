@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>404 Not Found</title>
 
@@ -14,17 +11,12 @@
 
 :root{
 
-    --bg:#ffffff;
-
-    --text:#444444;
-
-    --sub:#7a7a7a;
-
-    --border:#d9d9d9;
-
-    --button-bg:#ffffff;
-
-    --button-hover:#f5f5f5;
+--bg:#ffffff;
+--title:#1d1d1f;
+--text:#6e6e73;
+--border:#d2d2d7;
+--button:#ffffff;
+--buttonHover:#f5f5f7;
 
 }
 
@@ -32,10 +24,161 @@
 
 :root{
 
-    --bg:#000000;
+--bg:#000000;
+--title:#f5f5f7;
+--text:#8e8e93;
+--border:#3a3a3c;
+--button:#111113;
+--buttonHover:#1c1c1e;
 
-    --text:#f2f2f2;
+}
 
-    --sub:#9f9f9f;
+}
 
-    --border:#3b3b3b;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+
+height:100%;
+
+}
+
+body{
+
+height:100%;
+
+background:var(--bg);
+
+color:var(--title);
+
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"SF Pro Display",
+"SF Pro Text",
+sans-serif;
+
+display:flex;
+
+justify-content:center;
+
+align-items:flex-start;
+
+padding-top:22vh;
+
+padding-left:max(24px, env(safe-area-inset-left));
+
+padding-right:max(24px, env(safe-area-inset-right));
+
+padding-bottom:env(safe-area-inset-bottom);
+
+}
+
+.container{
+
+width:100%;
+max-width:330px;
+text-align:center;
+
+}
+
+h1{
+
+font-size:48px;
+
+font-weight:500;
+
+letter-spacing:-1px;
+
+margin-bottom:12px;
+
+}
+
+h2{
+
+font-size:18px;
+
+font-weight:500;
+
+letter-spacing:.3px;
+
+margin-bottom:26px;
+
+}
+
+p{
+
+font-size:15px;
+
+line-height:1.75;
+
+color:var(--text);
+
+}
+
+.back{
+
+display:inline-flex;
+
+justify-content:center;
+
+align-items:center;
+
+margin-top:42px;
+
+min-width:120px;
+
+height:42px;
+
+padding:0 24px;
+
+border:1px solid var(--border);
+
+border-radius:11px;
+
+background:var(--button);
+
+color:var(--title);
+
+font-size:16px;
+
+text-decoration:none;
+
+-webkit-tap-highlight-color:transparent;
+
+}
+
+.back:active{
+
+background:var(--buttonHover);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>404</h1>
+
+<h2>NOT FOUND</h2>
+
+<p>
+The requested page could not be found.<br>
+Please check the URL and try again.
+</p>
+
+<a href="#">BACK</a>
+
+</div>
+
+</body>
+
+</html>
