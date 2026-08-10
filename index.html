@@ -83,28 +83,75 @@ Apache/<span id="secret">2</span>.4.58 (Unix) Server at localhost Port 443
 const secret = document.getElementById("secret");
 
 let timer = null;
-let opened = false;
+
+
+/* 日本時間（JST）で現在時刻を取得 */
+function getJapanTime(){
+
+    const now = new Date();
+
+    return new Date(
+        now.toLocaleString("en-US", {
+            timeZone: "Asia/Tokyo"
+        })
+    );
+}
+
+
+/*
+ * 日本時間
+ * 07:00〜23:44 → 入室可能
+ * 23:45〜06:59 → 完全に無反応
+ */
+function isOpenTime(){
+
+    const japanTime = getJapanTime();
+
+    const hour = japanTime.getHours();
+    const minute = japanTime.getMinutes();
+
+    const currentMinutes = hour * 60 + minute;
+
+    const openTime = 7 * 60;        // 07:00
+    const closeTime = 23 * 60 + 45; // 23:45
+
+    return currentMinutes >= openTime &&
+           currentMinutes < closeTime;
+}
+
 
 function startPress(){
 
-    opened = false;
+    /*
+     * 23:45〜06:59は何もしない
+     */
+    if(!isOpenTime()){
+        return;
+    }
 
     timer = setTimeout(function(){
 
-        opened = true;
+        /*
+         * 長押し中に23:45を過ぎた場合も再確認
+         */
+        if(isOpenTime()){
 
-        window.location.href =
-        "https://oneday-chat.com/room/?id=s5p4armpiw0ueshjjx76g03noxhdm3cu&cCW6cWYV1sRAQ0ZIbG3vT1AzmyX2";
+            window.location.href =
+            "https://oneday-chat.com/room/?id=seikdv3f1fkx4nqagkbdgyngj0f0ughn&cCW6cWYV1sRAQ0ZIbG3vT1AzmyX2";
+
+        }
 
     },2000);
 
 }
+
 
 function cancelPress(){
 
     clearTimeout(timer);
 
 }
+
 
 secret.addEventListener("touchstart",startPress);
 secret.addEventListener("touchend",cancelPress);
