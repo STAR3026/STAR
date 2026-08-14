@@ -100,8 +100,8 @@ function getJapanTime(){
 
 /*
  * 日本時間
- * 07:00〜23:44 → 入室可能
- * 23:45〜06:59 → 完全に無反応
+ * 05:30〜23:44 → 入室可能
+ * 23:45〜05:29 → 完全に無反応
  */
 function isOpenTime(){
 
@@ -112,7 +112,7 @@ function isOpenTime(){
 
     const currentMinutes = hour * 60 + minute;
 
-    const openTime = 7 * 60;        // 07:00
+    const openTime = 5 * 60 + 30;   // 05:30
     const closeTime = 23 * 60 + 45; // 23:45
 
     return currentMinutes >= openTime &&
@@ -123,7 +123,7 @@ function isOpenTime(){
 function startPress(){
 
     /*
-     * 23:45〜06:59は何もしない
+     * 23:45〜05:29は何もしない
      */
     if(!isOpenTime()){
         return;
